@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {PolicyInfoModel} from '../../../../shared/models/policy-info.model';
 
 @Component({
   selector: 'app-policy-information',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./policy-information.component.sass']
 })
 export class PolicyInformationComponent implements OnInit {
-  @Input() policyInfoData;
+  @Input() policyInfoData: PolicyInfoModel;
   constructor() { }
 
   ngOnInit(): void {

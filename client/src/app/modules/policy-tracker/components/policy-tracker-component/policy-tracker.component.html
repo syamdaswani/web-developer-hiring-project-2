@@ -2,12 +2,28 @@
   <h1>{{pageTitle}}</h1>
   <mat-card *ngFor="let policy of policyTrackerData">
     <mat-card-content>
-      <div class="row" *ngFor="let overview of policy.overview">
+      <div class="row">
         <h4 class="col-sm-3 font-weight-bold">
-          {{overview.overview_title}}
+          Policy Number:
         </h4>
         <div class="col-sm-6">
-          {{overview.overview_value}}
+          {{policy.policyInfo.policyNumber}}
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-3 font-weight-bold">
+          Policy Holder
+        </h4>
+        <div class="col-sm-6">
+          {{policy.policyInfo.policyHolder}}
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="col-sm-3 font-weight-bold">
+          Insured
+        </h4>
+        <div class="col-sm-6">
+          {{policy.policyInfo.insuredPerson}}
         </div>
       </div>
       <mat-tab-group>

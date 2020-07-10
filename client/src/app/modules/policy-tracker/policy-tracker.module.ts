@@ -7,6 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PolicyInformationComponent } from './components/policy-information/policy-information.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import {PaymentTrackerService} from '../../shared/services/payment-tracker.service';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { PaymentHistoryComponent } from './components/payment-history/payment-hi
     MatCardModule,
     MatTabsModule,
     PolicyTrackerRoutingModule,
-  ]
+  ],
+  providers: [PaymentTrackerService]
 })
 export class PolicyTrackerModule { }
