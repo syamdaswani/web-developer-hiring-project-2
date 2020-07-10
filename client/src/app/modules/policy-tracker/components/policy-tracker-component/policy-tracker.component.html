@@ -31,7 +31,7 @@
           <app-policy-information [policyInfoData]="policy.policyInfo"></app-policy-information>
         </mat-tab>
         <mat-tab label="Payment History">
-          <app-payment-history [paymentHistoryData]></app-payment-history>
+          <app-payment-history [paymentHistoryData]="policy.paymentHistory"></app-payment-history>
         </mat-tab>
       </mat-tab-group>
     </mat-card-content>

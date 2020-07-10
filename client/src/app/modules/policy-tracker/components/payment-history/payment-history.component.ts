@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import {PaymentHistoryModel} from '../../../../shared/models/payment-history.model';
 
 @Component({
   selector: 'app-payment-history',
@@ -7,6 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class PaymentHistoryComponent implements OnInit {
   @Input() paymentHistoryData;
+  displayedColumns: string[] = ['paymentDate', 'paymentAmount'];
+
   constructor() {
   }
 

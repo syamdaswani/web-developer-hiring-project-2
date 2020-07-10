@@ -8,6 +8,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PolicyInformationComponent } from './components/policy-information/policy-information.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import {PaymentTrackerService} from '../../shared/services/payment-tracker.service';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import {PaymentTrackerService} from '../../shared/services/payment-tracker.servi
     CommonModule,
     MatCardModule,
     MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
     PolicyTrackerRoutingModule,
   ],
   providers: [PaymentTrackerService]
