@@ -15,4 +15,6 @@ export class PolicyInfoModel {
   paidPremium: number;
   totalPremium: number;
   paymentHistory: Array<PaymentHistoryModel>;
+  yearsPaid: number;
+  yearsToPay: number;
 }

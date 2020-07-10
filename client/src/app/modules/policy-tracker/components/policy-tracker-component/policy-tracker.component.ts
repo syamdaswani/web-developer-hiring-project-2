@@ -37,9 +37,15 @@ export class PolicyTrackerComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  openPaymentHistoryDialog(paymentHistory: Array<PaymentHistoryModel>): void {
+  openPaymentHistoryDialog(yearsPaid: number,
+                           yearsToPay: number,
+                           paymentHistory: Array<PaymentHistoryModel>): void {
     const dialogRef = this.dialog.open(PaymentHistoryComponent, {
-      data: paymentHistory
+      data: {
+        yearsPaidData: yearsPaid,
+        yearsToPayData: yearsToPay,
+        paymentHistoryData: paymentHistory
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {

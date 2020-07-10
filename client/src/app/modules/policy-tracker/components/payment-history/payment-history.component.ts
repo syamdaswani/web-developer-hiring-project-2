@@ -16,9 +16,16 @@ export class PaymentHistoryComponent implements OnInit {
   dataSource: MatTableDataSource<PaymentHistoryModel>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  yearsPaid: number;
+  yearsToPay: number;
+  paymentProgress: number;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Array<PaymentHistoryModel>) {
-    this.dataSource = new MatTableDataSource(this.data);
+  constructor(@Inject(MAT_DIALOG_DATA) public data) {
+    this.dataSource = new MatTableDataSource(this.data.paymentHistoryData);
+    this.yearsPaid = this.data.yearsPaidData;
+    this.yearsToPay = this.data.yearsToPayData;
+    this.paymentProgress = this.computePaymentProgress(this.yearsPaid, this.yearsToPay);
+    console.log(this.paymentProgress);
   }
 
   ngOnInit(): void {
@@ -26,4 +33,8 @@ export class PaymentHistoryComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  computePaymentProgress(yearsPaid: number,
+                         yearsToPay: number): number {
+    return (yearsPaid / yearsToPay) * 100;
+  }
 }

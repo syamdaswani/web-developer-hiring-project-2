@@ -39,20 +39,20 @@
         <!-- Paid Premium Column -->
         <ng-container matColumnDef="paidPremium">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Paid Premium</th>
-          <td mat-cell *matCellDef="let row"> {{row.paidPremium}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.paidPremium | currency: 'PHP'}} </td>
         </ng-container>
 
         <!-- Total Premium Column -->
         <ng-container matColumnDef="totalPremium">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Premium</th>
-          <td mat-cell *matCellDef="let row"> {{row.totalPremium}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.totalPremium | currency: 'PHP'}} </td>
         </ng-container>
 
         <!-- Show Payment History Column -->
         <ng-container matColumnDef="showPaymentHistory">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
           <td mat-cell *matCellDef="let row">
-            <button mat-flat-button color="warn" (click)="openPaymentHistoryDialog(row.paymentHistory)">Show Payment History</button>
+            <button mat-flat-button color="warn" (click)="openPaymentHistoryDialog(row.yearsPaid, row.yearsToPay, row.paymentHistory)">Show Payment History</button>
           </td>
         </ng-container>
 
@@ -60,7 +60,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>
