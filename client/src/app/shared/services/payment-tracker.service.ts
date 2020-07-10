@@ -17,7 +17,6 @@ export class PaymentTrackerService {
       {policyInfo: this.getPolicyInfoData(), paymentHistory: this.getPaymentHistoryData()},
       {policyInfo: this.getPolicyInfoData(), paymentHistory: this.getPaymentHistoryData()},
     ];
-    policyTrackerData.push();
     return policyTrackerData;
   }
 
