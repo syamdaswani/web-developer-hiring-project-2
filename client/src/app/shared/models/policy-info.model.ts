@@ -1,3 +1,5 @@
+import {PaymentHistoryModel} from './payment-history.model';
+
 export class PolicyInfoModel {
   policyNumber: string;
   policyHolder: string;
@@ -9,4 +11,8 @@ export class PolicyInfoModel {
   lastStatementAmount: number;
   paymentDueDate: Date;
   policyStatus: string;
+  mode: string;
+  paidPremium: number;
+  totalPremium: number;
+  paymentHistory: Array<PaymentHistoryModel>;
 }

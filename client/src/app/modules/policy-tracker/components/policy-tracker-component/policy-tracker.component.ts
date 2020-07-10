@@ -1,6 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {PolicyTrackerModel} from '../../../../shared/models/policy-tracker.model';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {PaymentTrackerService} from '../../../../shared/services/payment-tracker.service';
+import {MatTableDataSource} from '@angular/material/table';
+import {PolicyInfoModel} from '../../../../shared/models/policy-info.model';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatDialog} from '@angular/material/dialog';
+import {PaymentHistoryComponent} from '../payment-history/payment-history.component';
+import {PaymentHistoryModel} from '../../../../shared/models/payment-history.model';
 
 @Component({
   selector: 'app-policy-tracker',
@@ -9,14 +15,36 @@ import {PaymentTrackerService} from '../../../../shared/services/payment-tracker
 })
 export class PolicyTrackerComponent implements OnInit {
   pageTitle = 'Policy Tracker';
+  displayedColumns: string[] = ['policyNo', 'policyHolder', 'insuredPerson', 'mode', 'paidPremium', 'totalPremium', 'showPaymentHistory'];
   // TODO get this data from express
-  policyTrackerData: Array<PolicyTrackerModel>;
+  dataSource: MatTableDataSource<PolicyInfoModel>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private paymentTrackerService: PaymentTrackerService) {
+  constructor(private paymentTrackerService: PaymentTrackerService,
+              public dialog: MatDialog) {
+    this.dataSource = new MatTableDataSource(this.paymentTrackerService.getPolicyInfoData());
   }
 
   ngOnInit(): void {
-    this.policyTrackerData = this.paymentTrackerService.getPolicyTrackerData();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter(filterValue: string): void {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+  openPaymentHistoryDialog(paymentHistory: Array<PaymentHistoryModel>): void {
+    const dialogRef = this.dialog.open(PaymentHistoryComponent, {
+      data: paymentHistory
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

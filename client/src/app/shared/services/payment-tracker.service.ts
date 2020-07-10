@@ -11,6 +11,8 @@ export class PaymentTrackerService {
   constructor() {
   }
 
+  /*
+  TODO remove this
   public getPolicyTrackerData(): Array<PolicyTrackerModel> {
 
     const policyTrackerData: Array<PolicyTrackerModel> = [
@@ -18,29 +20,80 @@ export class PaymentTrackerService {
       {policyInfo: this.getPolicyInfoData(), paymentHistory: this.getPaymentHistoryData()},
     ];
     return policyTrackerData;
-  }
+  }*/
 
   public getPaymentHistoryData(): Array<PaymentHistoryModel> {
-    const paymentHistory: Array<PaymentHistoryModel> = [
-      {paymentDate: new Date('2020/07/01'), paymentAmount: 1000.00},
-      {paymentDate: new Date('2020/08/01'), paymentAmount: 1100.00},
-      {paymentDate: new Date('2020/09/01'), paymentAmount: 1200.00},
+    const paymentHistoryList: Array<PaymentHistoryModel> = [
+      {
+        paymentDate: new Date('2020/07/01'),
+        paymentAmount: 1000.00
+      },
+      {
+        paymentDate: new Date('2020/08/01'),
+        paymentAmount: 1100.00
+      },
+      {
+        paymentDate: new Date('2020/09/01'),
+        paymentAmount: 1200.00
+      },
     ];
-    return paymentHistory;
+    return paymentHistoryList;
   }
 
-  public getPolicyInfoData(): PolicyInfoModel {
-    let policyInfo: PolicyInfoModel = new PolicyInfoModel();
-    policyInfo.policyNumber = '12345';
-    policyInfo.policyHolder = 'Syam Daswani';
-    policyInfo.insuredPerson = 'Marga Daswani';
-    policyInfo.coverageStartDate = new Date('2020/03/25');
-    policyInfo.coverageEndDate = new Date('2099/10/18');
-    policyInfo.lifeCoverage = 500000.00;
-    policyInfo.lastStatementDate = new Date('2020/07/09');
-    policyInfo.lastStatementAmount = 5430.77;
-    policyInfo.paymentDueDate = new Date('2020/08/15');
-    policyInfo.policyStatus = 'Active';
-    return policyInfo;
+  public getPolicyInfoData(): Array<PolicyInfoModel> {
+    const policyInfoList: Array<PolicyInfoModel> = [];
+    // Create 100 Policies
+    const users: PolicyInfoModel[] = [];
+    for (let i = 1; i <= 100; i++) {
+      policyInfoList.push(this.createNewPolicyInfo(i));
+    }
+
+    return policyInfoList;
+  }
+
+  createNewPolicyInfo(id: number): PolicyInfoModel {
+    const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
+      'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
+      'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
+    const policyHolderRandom =
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+    const insuredPersonRandom =
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+    const paymentHistoryList: Array<PaymentHistoryModel> = [];
+    for (let i = 1; i <= this.randomIntFromInterval(1, 100); i++) {
+      paymentHistoryList.push(this.createNewPaymentHistory(i));
+    }
+    return {
+      policyNumber: id.toString(),
+      policyHolder: policyHolderRandom,
+      insuredPerson: insuredPersonRandom,
+      coverageStartDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+      coverageEndDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+      lifeCoverage: this.randomIntFromInterval(1, 5000000),
+      lastStatementDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+      lastStatementAmount: this.randomIntFromInterval(1, 5000000),
+      paymentDueDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+      policyStatus: 'Active',
+      mode: 'Monthly',
+      paidPremium: this.randomIntFromInterval(1, 5000000),
+      totalPremium: this.randomIntFromInterval(1, 5000000),
+      paymentHistory: paymentHistoryList
+    };
+  }
+  createNewPaymentHistory(id: number): PaymentHistoryModel {
+    return {
+      paymentAmount: this.randomIntFromInterval(1, 5000),
+      paymentDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31'))
+    };
+  }
+  randomDate(start, end): Date {
+    const date = new Date(+start + Math.random() * (end - start));
+    return date;
+  }
+
+  randomIntFromInterval(min, max): number {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 }

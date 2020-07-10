@@ -1,39 +1,66 @@
 <div class="main-container">
-  <h1>{{pageTitle}}</h1>
-  <mat-card *ngFor="let policy of policyTrackerData">
+  <mat-card>
+    <mat-card-title>
+      {{pageTitle}}
+    </mat-card-title>
     <mat-card-content>
-      <div class="row">
-        <h4 class="col-sm-3 font-weight-bold">
-          Policy Number:
-        </h4>
-        <div class="col-sm-6">
-          {{policy.policyInfo.policyNumber}}
-        </div>
+      <div>
+        <mat-form-field appearance="standard">
+          <mat-label>Search</mat-label>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
       </div>
-      <div class="row">
-        <h4 class="col-sm-3 font-weight-bold">
-          Policy Holder
-        </h4>
-        <div class="col-sm-6">
-          {{policy.policyInfo.policyHolder}}
-        </div>
-      </div>
-      <div class="row">
-        <h4 class="col-sm-3 font-weight-bold">
-          Insured
-        </h4>
-        <div class="col-sm-6">
-          {{policy.policyInfo.insuredPerson}}
-        </div>
-      </div>
-      <mat-tab-group>
-        <mat-tab label="Policy Information">
-          <app-policy-information [policyInfoData]="policy.policyInfo"></app-policy-information>
-        </mat-tab>
-        <mat-tab label="Payment History">
-          <app-payment-history [paymentHistoryData]="policy.paymentHistory"></app-payment-history>
-        </mat-tab>
-      </mat-tab-group>
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Policy No. Column -->
+        <ng-container matColumnDef="policyNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Policy No.</th>
+          <td mat-cell *matCellDef="let row"> {{row.policyNumber}} </td>
+        </ng-container>
+
+        <!-- Policy Holder Column -->
+        <ng-container matColumnDef="policyHolder">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Policy Holder</th>
+          <td mat-cell *matCellDef="let row"> {{row.policyHolder}} </td>
+        </ng-container>
+
+        <!-- Insured Person Column -->
+        <ng-container matColumnDef="insuredPerson">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Insured Person</th>
+          <td mat-cell *matCellDef="let row"> {{row.insuredPerson}} </td>
+        </ng-container>
+
+        <!-- Mode Column -->
+        <ng-container matColumnDef="mode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mode </th>
+          <td mat-cell *matCellDef="let row"> {{row.mode}} </td>
+        </ng-container>
+
+        <!-- Paid Premium Column -->
+        <ng-container matColumnDef="paidPremium">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Paid Premium</th>
+          <td mat-cell *matCellDef="let row"> {{row.paidPremium}} </td>
+        </ng-container>
+
+        <!-- Total Premium Column -->
+        <ng-container matColumnDef="totalPremium">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Total Premium</th>
+          <td mat-cell *matCellDef="let row"> {{row.totalPremium}} </td>
+        </ng-container>
+
+        <!-- Show Payment History Column -->
+        <ng-container matColumnDef="showPaymentHistory">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-flat-button color="warn" (click)="openPaymentHistoryDialog(row.paymentHistory)">Show Payment History</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </mat-card-content>
   </mat-card>
 </div>
