@@ -5,10 +5,11 @@ import {PolicyTrackerRoutingModule} from './policy-tracker-routing.module';
 import {PolicyTrackerComponent} from './components/policy-tracker-component/policy-tracker.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { PolicyInformationComponent } from './components/policy-information/policy-information.component';
 
 
 @NgModule({
-  declarations: [PolicyTrackerComponent],
+  declarations: [PolicyTrackerComponent, PolicyInformationComponent],
   imports: [
     CommonModule,
     MatCardModule,

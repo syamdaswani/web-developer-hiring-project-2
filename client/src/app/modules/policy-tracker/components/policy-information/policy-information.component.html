@@ -1,0 +1,37 @@
+<div class="tab-container">
+  <h1>Insurance</h1>
+  <div class="row">
+    <div class="col-sm-2 font-weight-lighter">
+      <h3>Life Coverage</h3>
+    </div>
+    <div class="col-sm-4">
+      <h2 class="font-weight-bold">{{policyInfoData.life_coverage | currency:'PHP'}}</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 font-weight-lighter">
+      <h3>Amount Due as of Last Statement
+        Dated {{policyInfoData.last_statement_date | date: 'mediumDate'}}</h3>
+    </div>
+    <div class="col-sm-4">
+      <h3
+        class="font-weight-bold">{{policyInfoData.last_statement_amount | currency:'PHP'}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 font-weight-lighter">
+      <h3>Payment Due Date</h3>
+    </div>
+    <div class="col-sm-4 font-weight-lighter">
+      <p>{{policyInfoData.payment_due_date}}</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 font-weight-lighter">
+      <h3>Policy Status</h3>
+    </div>
+    <div class="col-sm-4 font-weight-lighter">
+      <p>{{policyInfoData.policy_status}}</p>
+    </div>
+  </div>
+</div>
