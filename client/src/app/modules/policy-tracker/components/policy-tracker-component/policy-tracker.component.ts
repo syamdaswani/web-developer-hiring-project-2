@@ -31,7 +31,8 @@ export class PolicyTrackerComponent implements OnInit {
       last_statement_amount: 5430.77,
       payment_due_date: '2020/08/15',
       policy_status: 'Active'
-    }
+    },
+    paymentHistory: [{}]
   }, {
     overview: [
       {
@@ -55,7 +56,8 @@ export class PolicyTrackerComponent implements OnInit {
       last_statement_amount: 5430.77,
       payment_due_date: '2020/02/15',
       policy_status: 'Active'
-    }
+    },
+    paymentHistory: [{}]
   }];
 
   constructor() {

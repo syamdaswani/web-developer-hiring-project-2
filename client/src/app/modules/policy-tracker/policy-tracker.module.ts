@@ -6,10 +6,11 @@ import {PolicyTrackerComponent} from './components/policy-tracker-component/poli
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PolicyInformationComponent } from './components/policy-information/policy-information.component';
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 
 
 @NgModule({
-  declarations: [PolicyTrackerComponent, PolicyInformationComponent],
+  declarations: [PolicyTrackerComponent, PolicyInformationComponent, PaymentHistoryComponent],
   imports: [
     CommonModule,
     MatCardModule,

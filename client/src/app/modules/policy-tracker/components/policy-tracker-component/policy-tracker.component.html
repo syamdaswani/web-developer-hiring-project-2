@@ -14,7 +14,9 @@
         <mat-tab label="Policy Information">
           <app-policy-information [policyInfoData]="policy.policyInfo"></app-policy-information>
         </mat-tab>
-        <mat-tab label="Payment History">Payment History</mat-tab>
+        <mat-tab label="Payment History">
+          <app-payment-history [paymentHistoryData]></app-payment-history>
+        </mat-tab>
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
