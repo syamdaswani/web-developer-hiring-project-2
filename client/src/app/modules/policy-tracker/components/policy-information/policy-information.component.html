@@ -1,5 +1,10 @@
 <div class="tab-container">
   <h1>Insurance</h1>
+  <p>
+    <span class="font-italic">{{policyInfoData.insured_person}}</span> is covered from
+    <span class="font-weight-bold">{{policyInfoData.coverage_start_date | date: 'mediumDate'}}</span> until
+    <span class="font-weight-bold">{{policyInfoData.coverage_end_date | date: 'mediumDate'}}</span>
+  </p>
   <div class="row">
     <div class="col-sm-2 font-weight-lighter">
       <h3>Life Coverage</h3>

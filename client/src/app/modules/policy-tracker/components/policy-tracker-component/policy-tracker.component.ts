@@ -23,6 +23,9 @@ export class PolicyTrackerComponent implements OnInit {
         overview_value: 'Marga Daswani'
       }],
     policyInfo: {
+      insured_person: 'Marga Daswani',
+      coverage_start_date: '2020/03/25',
+      coverage_end_date: '2099/10/18',
       life_coverage: 500000.00,
       last_statement_date: '2020/07/09',
       last_statement_amount: 5430.77,
@@ -44,6 +47,9 @@ export class PolicyTrackerComponent implements OnInit {
         overview_value: 'Janaki Daswani'
       }],
     policyInfo: {
+      insured_person: 'Janaki Daswani',
+      coverage_start_date: '2018/08/30',
+      coverage_end_date: '2094/08/30',
       life_coverage: 500000.00,
       last_statement_date: '2020/01/02',
       last_statement_amount: 5430.77,
