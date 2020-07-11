@@ -23,12 +23,22 @@ export class PolicyTrackerComponent implements OnInit {
 
   constructor(private paymentTrackerService: PaymentTrackerService,
               public dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource(this.paymentTrackerService.getPolicyInfoData());
+    this.initializeDataSource().then(r => console.log(r));
+  }
+
+  async initializeDataSource(): Promise<MatTableDataSource<PolicyInfoModel>> {
+    let policyInfoList: Array<PolicyInfoModel> = [];
+    await this.paymentTrackerService.getPolicyInfoData().toPromise().then(value => {
+      policyInfoList = value;
+      return policyInfoList;
+    });
+    this.dataSource = new MatTableDataSource(policyInfoList);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    return this.dataSource;
   }
 
   ngOnInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string): void {

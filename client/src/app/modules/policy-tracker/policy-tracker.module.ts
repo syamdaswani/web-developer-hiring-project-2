@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSortModule} from '@angular/material/sort';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatInputModule,
     MatButtonModule,
     MatDialogModule,
+    HttpClientModule,
     PolicyTrackerRoutingModule,
   ],
   providers: [PaymentTrackerService]
