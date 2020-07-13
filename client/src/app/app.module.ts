@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {PolicyReportsModule} from './modules/policy-reports/policy-reports.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
   imports: [
     BrowserModule,
     PolicyTrackerModule,
+    PolicyReportsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
