@@ -6,14 +6,33 @@ import {PolicyReportModel} from '../models/policy-report.model';
 
 @Service()
 export default class Policyinfo {
-    public async getPolicyReportInfo(): Promise<Array<PolicyReportModel>> {
-        const policyReportInfoList: Array<PolicyReportModel> = [];
-        policyReportInfoList.push(this.createNewPolicyReportInfo('Unpaid'));
-        policyReportInfoList.push(this.createNewPolicyReportInfo('Paid'));
-        return policyReportInfoList;
+
+    public async getNewPoliciesReportInfo(): Promise<Array<PolicyReportModel>> {
+        const newPoliciesReportInfoList: Array<PolicyReportModel> = [];
+        newPoliciesReportInfoList.push(this.createNewPoliciesReportInfo('Monthly'));
+        newPoliciesReportInfoList.push(this.createNewPoliciesReportInfo('Yearly'));
+        return newPoliciesReportInfoList;
     }
 
-    createNewPolicyReportInfo(labelValue: string): PolicyReportModel {
+    public async getPremiumsReportInfo(): Promise<Array<PolicyReportModel>> {
+        const premiumsReportInfoList: Array<PolicyReportModel> = [];
+        premiumsReportInfoList.push(this.createNewPremiumsReportInfo('Unpaid'));
+        premiumsReportInfoList.push(this.createNewPremiumsReportInfo('Paid'));
+        return premiumsReportInfoList;
+    }
+
+    createNewPoliciesReportInfo(labelValue: string): PolicyReportModel {
+        const paymentData = [];
+        for (let i = 1; i <= 11; i++) {
+            paymentData.push(this.randomIntFromInterval(1, 100));
+        }
+        return {
+            data: paymentData,
+            label: labelValue,
+        };
+    }
+
+    createNewPremiumsReportInfo(labelValue: string): PolicyReportModel {
         const paymentData = [];
         for (let i = 1; i <= 11; i++) {
             paymentData.push(this.randomIntFromInterval(1, 100000000));

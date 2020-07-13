@@ -19,10 +19,20 @@ export default (app: Router) => {
         }
     });
 
-    app.get('/getPolicyReportInfo', async function (req, res) {
+    app.get('/getPremiumsReportInfo', async function (req, res) {
         try {
             const policyInfoServiceInstance = Container.get(Policyinfo);
-            const policyReportInfoList: Array<PolicyReportModel> = await policyInfoServiceInstance.getPolicyReportInfo();
+            const policyReportInfoList: Array<PolicyReportModel> = await policyInfoServiceInstance.getPremiumsReportInfo();
+            return res.status(200).json(policyReportInfoList);
+        } catch (e) {
+            console.log('error: ', e);
+        }
+    });
+
+    app.get('/getNewPoliciesReportInfo', async function (req, res) {
+        try {
+            const policyInfoServiceInstance = Container.get(Policyinfo);
+            const policyReportInfoList: Array<PolicyReportModel> = await policyInfoServiceInstance.getNewPoliciesReportInfo();
             return res.status(200).json(policyReportInfoList);
         } catch (e) {
             console.log('error: ', e);

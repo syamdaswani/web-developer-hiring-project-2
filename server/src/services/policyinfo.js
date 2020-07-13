@@ -17,15 +17,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
 let Policyinfo = class Policyinfo {
-    getPolicyReportInfo() {
+    getNewPoliciesReportInfo() {
         return __awaiter(this, void 0, void 0, function* () {
-            const policyReportInfoList = [];
-            policyReportInfoList.push(this.createNewPolicyReportInfo('Unpaid'));
-            policyReportInfoList.push(this.createNewPolicyReportInfo('Paid'));
-            return policyReportInfoList;
+            const newPoliciesReportInfoList = [];
+            newPoliciesReportInfoList.push(this.createNewPoliciesReportInfo('Monthly'));
+            newPoliciesReportInfoList.push(this.createNewPoliciesReportInfo('Yearly'));
+            return newPoliciesReportInfoList;
         });
     }
-    createNewPolicyReportInfo(labelValue) {
+    getPremiumsReportInfo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const premiumsReportInfoList = [];
+            premiumsReportInfoList.push(this.createNewPremiumsReportInfo('Unpaid'));
+            premiumsReportInfoList.push(this.createNewPremiumsReportInfo('Paid'));
+            return premiumsReportInfoList;
+        });
+    }
+    createNewPoliciesReportInfo(labelValue) {
+        const paymentData = [];
+        for (let i = 1; i <= 11; i++) {
+            paymentData.push(this.randomIntFromInterval(1, 100));
+        }
+        return {
+            data: paymentData,
+            label: labelValue,
+        };
+    }
+    createNewPremiumsReportInfo(labelValue) {
         const paymentData = [];
         for (let i = 1; i <= 11; i++) {
             paymentData.push(this.randomIntFromInterval(1, 100000000));
