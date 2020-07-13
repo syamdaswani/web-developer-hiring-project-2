@@ -17,6 +17,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
 let Policyinfo = class Policyinfo {
+    getPolicyReportInfo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const policyReportInfoList = [];
+            policyReportInfoList.push(this.createNewPolicyReportInfo('Unpaid'));
+            policyReportInfoList.push(this.createNewPolicyReportInfo('Paid'));
+            return policyReportInfoList;
+        });
+    }
+    createNewPolicyReportInfo(labelValue) {
+        const paymentData = [];
+        for (let i = 1; i <= 11; i++) {
+            paymentData.push(this.randomIntFromInterval(1, 100000000));
+        }
+        return {
+            data: paymentData,
+            label: labelValue,
+        };
+    }
     getPolicyInfo() {
         return __awaiter(this, void 0, void 0, function* () {
             const policyInfoList = [];

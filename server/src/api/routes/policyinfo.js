@@ -30,4 +30,16 @@ exports.default = (app) => {
             }
         });
     });
+    app.get('/getPolicyReportInfo', function (req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const policyInfoServiceInstance = typedi_1.Container.get(policyinfo_1.default);
+                const policyReportInfoList = yield policyInfoServiceInstance.getPolicyReportInfo();
+                return res.status(200).json(policyReportInfoList);
+            }
+            catch (e) {
+                console.log('error: ', e);
+            }
+        });
+    });
 };

@@ -1,10 +1,29 @@
 import {Service} from 'typedi';
 import {PolicyInfoModel} from '../models/policy-info.model';
 import {PaymentHistoryModel} from '../models/payment-history.model';
+import {PolicyReportModel} from '../models/policy-report.model';
 
 
 @Service()
 export default class Policyinfo {
+    public async getPolicyReportInfo(): Promise<Array<PolicyReportModel>> {
+        const policyReportInfoList: Array<PolicyReportModel> = [];
+        policyReportInfoList.push(this.createNewPolicyReportInfo('Unpaid'));
+        policyReportInfoList.push(this.createNewPolicyReportInfo('Paid'));
+        return policyReportInfoList;
+    }
+
+    createNewPolicyReportInfo(labelValue: string): PolicyReportModel {
+        const paymentData = [];
+        for (let i = 1; i <= 11; i++) {
+            paymentData.push(this.randomIntFromInterval(1, 100000000));
+        }
+        return {
+            data: paymentData,
+            label: labelValue,
+        };
+    }
+
     public async getPolicyInfo(): Promise<Array<PolicyInfoModel>> {
         const policyInfoList: Array<PolicyInfoModel> = [];
         // Create 100 Policies
