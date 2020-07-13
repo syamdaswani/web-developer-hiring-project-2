@@ -1,12 +1,22 @@
-<h3 class="header-report">Paid vs Unpaid Premiums</h3>
-
-<div class="bar-graph-container">
+<h2 class="header-report font-weight-bold">Paid vs Unpaid Premiums</h2>
+<div class="graph-container">
   <canvas baseChart
           [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [legend]="chartLegend"
+          chartType="bar">
+  </canvas>
+</div>
+<h2 class="header-report font-weight-bold">New Policies</h2>
+<div class="graph-container">
+  <canvas baseChart
+          [datasets]="lineChartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          [legend]="chartLegend"
+          chartType="line"
+          [plugins]="chartPlugins">
   </canvas>
 </div>

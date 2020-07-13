@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
-import {Label} from 'ng2-charts';
+import {Color, Label} from 'ng2-charts';
 import {PolicyInfoService} from '../../../../shared/services/policy-info.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {PolicyInfoModel} from '../../../../shared/models/policy-info.model';
@@ -11,28 +11,36 @@ import {PolicyInfoModel} from '../../../../shared/models/policy-info.model';
   styleUrls: ['./premium-report.component.sass']
 })
 export class PremiumReportComponent implements OnInit {
-  barChartOptions: ChartOptions = {
+  chartOptions: ChartOptions = {
     responsive: true,
   };
-  barChartLabels: Label[] = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
+  chartLabels: Label[] = ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'];
   barChartType: ChartType = 'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
-
+  chartLegend = true;
+  chartPlugins = [];
   barChartData: ChartDataSets[] = [{data: [0], label: ''}];
 
+  lineChartData: ChartDataSets[] = [{data: [0], label: ''}];
+
   constructor(private paymentTrackerService: PolicyInfoService) {
-    this.initializeDataSet().then(r => console.log(r));
+    this.initializeBarChartDataSet().then(r => console.log(r));
+    this.initializeLineChartDataSet().then(r => console.log(r));
   }
 
   ngOnInit(): void {
   }
 
-  async initializeDataSet(): Promise<Array<ChartDataSets>> {
-    await this.paymentTrackerService.getPolicyReportInfo().toPromise().then(value => {
+  async initializeBarChartDataSet(): Promise<Array<ChartDataSets>> {
+    await this.paymentTrackerService.getPremiumsReportInfo().toPromise().then(value => {
       this.barChartData = value;
     });
-    console.log(this.barChartData);
     return this.barChartData;
+  }
+
+  async initializeLineChartDataSet(): Promise<Array<ChartDataSets>> {
+    await this.paymentTrackerService.getNewPoliciesReportInfo().toPromise().then(value => {
+      this.lineChartData = value;
+    });
+    return this.lineChartData;
   }
 }

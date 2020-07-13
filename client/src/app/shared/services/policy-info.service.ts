@@ -15,7 +15,11 @@ export class PolicyInfoService {
     return this.http.get(this.url + '/api/getPolicyInfo');
   }
 
-  public getPolicyReportInfo(): Observable<any> {
-    return this.http.get(this.url + '/api/getPolicyReportInfo');
+  public getPremiumsReportInfo(): Observable<any> {
+    return this.http.get(this.url + '/api/getPremiumsReportInfo');
+  }
+
+  public getNewPoliciesReportInfo(): Observable<any> {
+    return this.http.get(this.url + '/api/getNewPoliciesReportInfo');
   }
 }
