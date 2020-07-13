@@ -33,12 +33,14 @@ export default class PolicyInfoService {
         // Some values should be greater than the others
         const premiumValue = [this.randomIntFromInterval(1, 5000000), this.randomIntFromInterval(1, 5000000)];
         const paymentProgress = [this.randomIntFromInterval(1, 20), this.randomIntFromInterval(1, 20)];
+        const coverageDate: Date[] = [this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+            this.randomDate(new Date('2001/01/01'), new Date('2099/12/31'))]
         return {
             policyNumber: id.toString(),
             policyHolder: policyHolderRandom,
             insuredPerson: insuredPersonRandom,
-            coverageStartDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
-            coverageEndDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
+            coverageStartDate: coverageDate[0] > coverageDate[1] ? coverageDate[1] : coverageDate[0],
+            coverageEndDate: coverageDate[0] > coverageDate[1] ? coverageDate[0] : coverageDate[1],
             lifeCoverage: this.randomIntFromInterval(1, 500000),
             lastStatementDate: this.randomDate(new Date('2001/01/01'), new Date('2020/12/31')),
             lastStatementAmount: this.randomIntFromInterval(1, 50000),
