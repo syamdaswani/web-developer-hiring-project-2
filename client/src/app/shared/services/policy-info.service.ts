@@ -6,11 +6,16 @@ import {Observable} from 'rxjs/index';
   providedIn: 'root'
 })
 export class PolicyInfoService {
+  url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {
   }
 
   public getPolicyInfoData(): Observable<any> {
-    return this.http.get('http://localhost:3000/api/getPolicyInfo');
+    return this.http.get(this.url + '/api/getPolicyInfo');
+  }
+
+  public getPolicyReportInfo(): Observable<any> {
+    return this.http.get(this.url + '/api/getPolicyReportInfo');
   }
 }
