@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UnpaidPremiumReportComponent } from './unpaid-premium-report.component';
+import { PremiumReportComponent } from './premium-report.component';
 
 describe('UnpaidPremiumReportComponent', () => {
-  let component: UnpaidPremiumReportComponent;
-  let fixture: ComponentFixture<UnpaidPremiumReportComponent>;
+  let component: PremiumReportComponent;
+  let fixture: ComponentFixture<PremiumReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UnpaidPremiumReportComponent ]
+      declarations: [ PremiumReportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UnpaidPremiumReportComponent);
+    fixture = TestBed.createComponent(PremiumReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
