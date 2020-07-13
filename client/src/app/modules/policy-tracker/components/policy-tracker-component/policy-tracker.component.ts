@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {PaymentTrackerService} from '../../../../shared/services/payment-tracker.service';
+import {PolicyInfoService} from '../../../../shared/services/policy-info.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {PolicyInfoModel} from '../../../../shared/models/policy-info.model';
 import {MatPaginator} from '@angular/material/paginator';
@@ -21,7 +21,7 @@ export class PolicyTrackerComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private paymentTrackerService: PaymentTrackerService,
+  constructor(private paymentTrackerService: PolicyInfoService,
               public dialog: MatDialog) {
     this.initializeDataSource().then(r => console.log(r));
   }

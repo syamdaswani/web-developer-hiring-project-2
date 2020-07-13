@@ -7,7 +7,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PolicyInformationComponent } from './components/policy-information/policy-information.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import {PaymentTrackerService} from '../../shared/services/payment-tracker.service';
+import {PolicyInfoService} from '../../shared/services/policy-info.service';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -36,6 +36,6 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     PolicyTrackerRoutingModule,
   ],
-  providers: [PaymentTrackerService]
+  providers: [PolicyInfoService]
 })
 export class PolicyTrackerModule { }

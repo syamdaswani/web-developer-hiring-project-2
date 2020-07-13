@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Label} from 'ng2-charts';
+import {PolicyInfoService} from '../../../../shared/services/policy-info.service';
 
 @Component({
   selector: 'app-unpaid-premium-report',
@@ -21,7 +22,7 @@ export class PremiumReportComponent implements OnInit {
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Paid'}
   ];
 
-  constructor() {
+  constructor(private paymentTrackerService: PolicyInfoService) {
   }
 
   ngOnInit(): void {
