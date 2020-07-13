@@ -4,7 +4,7 @@ import {PaymentHistoryModel} from '../models/payment-history.model';
 
 
 @Service()
-export default class PolicyInfoService {
+export default class Policyinfo {
     public async getPolicyInfo(): Promise<Array<PolicyInfoModel>> {
         const policyInfoList: Array<PolicyInfoModel> = [];
         // Create 100 Policies

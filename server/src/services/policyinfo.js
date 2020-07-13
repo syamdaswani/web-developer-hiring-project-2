@@ -16,7 +16,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typedi_1 = require("typedi");
-let PolicyInfoService = class PolicyInfoService {
+let Policyinfo = class Policyinfo {
     getPolicyInfo() {
         return __awaiter(this, void 0, void 0, function* () {
             const policyInfoList = [];
@@ -79,8 +79,8 @@ let PolicyInfoService = class PolicyInfoService {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 };
-PolicyInfoService = __decorate([
+Policyinfo = __decorate([
     typedi_1.Service()
-], PolicyInfoService);
-exports.default = PolicyInfoService;
+], Policyinfo);
+exports.default = Policyinfo;
 ;

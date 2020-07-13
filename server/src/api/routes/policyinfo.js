@@ -28,7 +28,6 @@ exports.default = (app) => {
             catch (e) {
                 console.log('error: ', e);
             }
-            // res.send('getPolicyInfo hello world')
         });
     });
 };
