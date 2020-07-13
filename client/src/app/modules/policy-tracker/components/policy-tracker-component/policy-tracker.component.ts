@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatDialog} from '@angular/material/dialog';
 import {PaymentHistoryComponent} from '../payment-history/payment-history.component';
 import {PaymentHistoryModel} from '../../../../shared/models/payment-history.model';
+import {PolicyInformationComponent} from '../policy-information/policy-information.component';
 
 @Component({
   selector: 'app-policy-tracker',
@@ -15,8 +16,7 @@ import {PaymentHistoryModel} from '../../../../shared/models/payment-history.mod
 })
 export class PolicyTrackerComponent implements OnInit {
   pageTitle = 'Policy Tracker';
-  displayedColumns: string[] = ['policyNo', 'policyHolder', 'insuredPerson', 'mode', 'paidPremium', 'totalPremium', 'showPaymentHistory'];
-  // TODO get this data from express
+  displayedColumns: string[] = ['policyNo', 'policyHolder', 'insuredPerson', 'mode', 'paidPremium', 'totalPremium', 'showPolicyInfo', 'showPaymentHistory'];
   dataSource: MatTableDataSource<PolicyInfoModel>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -55,6 +55,18 @@ export class PolicyTrackerComponent implements OnInit {
         yearsPaidData: yearsPaid,
         yearsToPayData: yearsToPay,
         paymentHistoryData: paymentHistory
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openPolicyInfoDialog(policyInfo: PolicyInfoModel): void {
+    const dialogRef = this.dialog.open(PolicyInformationComponent, {
+      data: {
+        policyInfoData: policyInfo
       }
     });
 

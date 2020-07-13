@@ -48,6 +48,14 @@
           <td mat-cell *matCellDef="let row"> {{row.totalPremium | currency: 'PHP'}} </td>
         </ng-container>
 
+        <!-- Show Policy Info Column -->
+        <ng-container matColumnDef="showPolicyInfo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-flat-button color="primary" (click)="openPolicyInfoDialog(row)">Show Policy Information</button>
+          </td>
+        </ng-container>
+
         <!-- Show Payment History Column -->
         <ng-container matColumnDef="showPaymentHistory">
           <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
