@@ -1,54 +1,46 @@
-# Loss Control Plus Hiring Project
-## Full-Stack Web Developer
+# Payment Tracker for Insurance
+## Project Overview
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [Loss Control Plus Hiring Project](#loss-control-plus-hiring-project)
-  - [Full-Stack Web Developer](#full-stack-web-developer)
-    - [READ THIS BEFORE YOU BEGIN](#read-this-before-you-begin)
-    - [Instructions](#instructions)
-    - [Project Requirements](#project-requirements)
-      - [Scenario](#scenario)
-      - [Success Conditions](#success-conditions)
-    - [Guidelines](#guidelines)
+- [Payment Tracker for Insurance](#payment-tracker-for-insurance)
+  - [Project Overview](#project-overview)
+    - [High Level Description](#high-level-description)
+    - [Demo](#demo)
+    - [Project Setup](#project-setup)
+    - [Environment Details](#environment-details)
+    - [Run Instructions](#environment-details)
 
 <!-- /code_chunk_output -->
 
-### READ THIS BEFORE YOU BEGIN
+### High Level Description
 
-This hiring project is intended to gauge a developer's ability to both work with the technologies we are using, as well as their soft-skills.
+This web application will allow insurance companies to easily track their customer's premiums for each of their policies. 
 
-Technical prowess is a good thing but, by itself, is not enough to earn a spot on our team.
+### Demo
+[Payment Tracker Demo AWS](http://syam-daswani-web-developer-hiring-project-2.s3-website-ap-southeast-1.amazonaws.com)
 
-### Instructions
+### Project Setup
+```
+NodeJs      - v12.18.2
+npm         - 6.14.6
+Angular CLI - 10.0.1
+Angular     - 10.0.1
+```
 
-1. Fork this repo.
-2. Review the guidelines
-3. Follow the Project Requirements.
-4. Reach out with any questions.
-5. Submit a pull request when your project is finished.
-
-### Project Requirements
-#### Scenario
-Welcome to Widgets Inc. We have an exciting new product in the insurance sector and we are hoping to expand our offering to cover more of our customer needs.
-
-We've decided to create a simple SPA web-app that allows our customers to track their policies to make sure that everyone has paid their premiums.
-
-
-#### Success Conditions
-1. Create an [Express](https://expressjs.com/) web backend with an [Angular](https://angular.io/) frontend.
-2. Store whatever information you think makes sense for an insurance payment system. Data points such as: due date, cancel date, payment date, amount, etc. would be a general idea of what might typically be used.
-3. Create a utility function that generates random application data. Using this function should allow for the application to appear to have been in production use for some time.
-4. Create several visual reports that dissect the available data and presents them in interesting and useful ways.
+### Environment Details
+The client directory contains the Angular frontend application which is hosted on `http://localhost:4200/`
+The client directory contains the Express.js backend application which is hosted on `http://localhost:3000/`
 
 
-### Guidelines
+### Run Instructions
+1. `cd` inside the root directory of the project
+2. `cd` inside the client directory 
+3. Run the `npm install` command
+4. Run the `ng serve` commaand
+5. `cd` inside the server directory from the root directory of the project
+6. Run the `npm install` command
+7. Run the `ng run start` commaand
 
-1. Commit early, commit often. We would love to see more commits showing the process you took to get to the finished product. Please do not squash your commits.
-2. Please use eslint. Airbnb is a great style to use for this project but you may choose another if you wish.
-3. We'd prefer Typescript to JavaScript but it's not absolutely required.
-4. Writing tests / using TDD practices would be a massive point in your favor.
-5. Spend as much, or as little, time on this as you wish. That said, we'd prefer a project be delivered within 72 hours of acceptance.
-6. We encourage you to reach out to us with any questions you may have. Doing so will not be seen as detrimental to your delivered project.
